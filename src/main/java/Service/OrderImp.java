@@ -33,8 +33,6 @@ public class OrderImp implements OrderService {
     @Override
     public void printOrdersByCustomer(Customer customer) {
         System.out.println("|-------" + customer.toStringFullName() + " ın faturaları : --------------]");
-        // Map kullanmak için silindi
-        //customer.getOrders().stream().map(order -> order.getId() + " " + order.getProducts().toString() + " " + order.getTotalPrice() + "₺").forEach(System.out::println);
 
         Map<String,List<Product>> a= Order.getAllOrders().stream().filter(order -> order.getCustomer() == customer).collect(Collectors.toMap(Order::getId,Order::getProducts));
 
